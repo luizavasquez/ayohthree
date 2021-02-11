@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AO3 Year in Review</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+  </head>
+  <body>
+
+    <h1>
+      AO3 {{data.year}} Year in Review 
+    </h1>
+
+    <table>
+      <tr>
+        <th>Overall Reading Stats</th>
+      </tr>
+      <tr>
+        <td>Words</td>
+        <td>{{data.total_words}}</td>
+      </tr>
+      <tr>
+        <td>Works (including rereads)</td>
+        <td>{{data.total_fics}}</td>
+      </tr>
+      <tr>
+        <td>Works (unique)</td>
+        <td>{{data.total_unique_fics}}</td>
+      </tr>
+      <tr>
+        <td>Relationships</td>
+        <td>{{data.total_relationships}}</td>
+      </tr>
+      <tr>
+        <td>Fandoms</td>
+        <td>{{data.total_fandoms}}</td>
+      </tr>
+    </table>
+    
+
+    <table>
+     <tr class="thead">
+        <td colspan="2">Top Fandoms</td>
+      </tr>
+      {% for row in data.top_fandoms %}
+        <tr>
+            <td>{{row.name}}</td>
+            <td>{{row.count}}</td>
+        </tr>
+    {% endfor %}
+    <tr><td colspan="2">&nbsp;</td></tr>
+    <tr class="thead">
+        <td colspan="2">Top Tags</td>
+      </tr>
+      {% for row in data.top_tags %}
+        <tr>
+            <td>{{row.name}}</td>
+            <td>{{row.count}}</td>
+        </tr>
+    {% endfor %}
+    <tr><td colspan="2">&nbsp;</td></tr>
+    <tr class="thead">
+        <td colspan="2">Top Ships</td>
+      </tr>
+      {% for row in data.top_relationships %}
+        <tr>
+            <td>{{row.name}}</td>
+            <td>{{row.count}}</td>
+        </tr>
+    {% endfor %}
+     <tr><td colspan="2">&nbsp;</td></tr> 
+     <tr class="thead">
+        <td colspan="2">Top Fics</td>
+     </tr>
+      {% for row in data.top_fics %}
+        <tr>
+            <td>{{row.name}}</td>
+            <td>{{row.count}}</td>
+        </tr>
+      {% endfor %}
+      <tr><td colspan="2">&nbsp;</td></tr>
+      <tr class="thead">
+        <td colspan="2">Top Authors</td>
+      </tr>
+      {% for row in data.top_authors %}
+        <tr>
+            <td>{{row.name}}</td>
+            <td>{{row.count}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <p>
+    You can also download a spreadsheet containing all your data from this year.
+    </p>
+    
+    <p>
+      <a href="/download">Download File</a>
+    </p>
+    
+    <p>
+      <a href="{{ url_for('home') }}">Return to main page</a>
+    </p>
+  </body>
+</html>
